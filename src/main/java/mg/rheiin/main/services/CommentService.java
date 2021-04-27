@@ -34,7 +34,7 @@ public class CommentService {
 		} else if (Objects.isNull(commentDTO.getValue()) || commentDTO.getValue().isEmpty() || commentDTO.getValue().isBlank()) {
 			throw new Exception("Cannot add empty or blank comment");
 		} else {
-			Comment comment = new Comment(commentDTO.getValue(), LocalDateTime.now());
+			Comment comment = new Comment(commentDTO.getValue(), LocalDateTime.now(), car.get());
 			car.get().getComments().add(comment);
 			carRepository.save(car.get());
 			executor.didPersist(comment, null);

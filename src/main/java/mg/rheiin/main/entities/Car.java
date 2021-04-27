@@ -30,7 +30,7 @@ public class Car implements Responsable {
 	@Column
 	private Double traveledDistance;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "car")
 	private List<Comment> comments;
 	
 	public Car() {}

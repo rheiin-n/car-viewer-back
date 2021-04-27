@@ -8,9 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import mg.rheiin.main.decorator.Responsable;
 
@@ -28,11 +29,17 @@ public class Comment implements Responsable {
 	@Column(nullable = false)
 	private LocalDateTime date;
 	
+	@ManyToOne
+	@JoinColumn(name = "car_id")
+	@JsonIgnore
+	private Car car;
+	
 	public Comment() {}
 	
-	public Comment(String value, LocalDateTime date) {
+	public Comment(String value, LocalDateTime date, Car car) {
 		this.value = value;
 		this.date = date;
+		this.car = car;
 	}
 
 	public Long getId() {
@@ -57,5 +64,13 @@ public class Comment implements Responsable {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 }
