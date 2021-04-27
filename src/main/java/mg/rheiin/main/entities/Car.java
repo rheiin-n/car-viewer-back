@@ -4,15 +4,18 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import mg.rheiin.main.decorator.Responsable;
+
 @Entity
 @Access(AccessType.FIELD)
-public class Car {
+public class Car implements Responsable {
 	
 	@Id
 	@GeneratedValue
@@ -27,7 +30,7 @@ public class Car {
 	@Column
 	private Double traveledDistance;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Comment> comments;
 	
 	public Car() {}

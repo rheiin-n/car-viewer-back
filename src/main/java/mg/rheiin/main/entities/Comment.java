@@ -12,9 +12,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import mg.rheiin.main.decorator.Responsable;
+
 @Entity
 @Access(AccessType.FIELD)
-public class Comment {
+public class Comment implements Responsable {
 	
 	@Id
 	@GeneratedValue
@@ -26,15 +28,11 @@ public class Comment {
 	@Column(nullable = false)
 	private LocalDateTime date;
 	
-	@ManyToOne
-	private Car car;
-	
 	public Comment() {}
 	
-	public Comment(String value, LocalDateTime date, Car car) {
+	public Comment(String value, LocalDateTime date) {
 		this.value = value;
 		this.date = date;
-		this.car = car;
 	}
 
 	public Long getId() {
@@ -59,13 +57,5 @@ public class Comment {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
-	}
-
-	public Car getCar() {
-		return car;
-	}
-
-	public void setCar(Car car) {
-		this.car = car;
 	}
 }

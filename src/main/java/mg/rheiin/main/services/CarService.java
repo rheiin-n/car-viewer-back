@@ -22,6 +22,11 @@ public class CarService {
 	CarRepository carRepository;
 	
 	@Transactional
+	public Car updateCar(Car car) {
+		return carRepository.save(car);
+	}
+	
+	@Transactional
 	public void saveCar(CarRequestDTO carDTO, QueryExecutor<Car, CVError> executor) throws Exception {
 		System.out.println("----------------------" + carDTO.toString());
 		if (Objects.isNull(carDTO.getImmatriculation()) || carDTO.getImmatriculation().isEmpty() || carDTO.getImmatriculation().isBlank()) {

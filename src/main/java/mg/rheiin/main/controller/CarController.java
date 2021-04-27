@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,11 +48,11 @@ public class CarController {
 		}
 		
 		@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<Car> getCar(@PathVariable(value = "id") Long id) {
+		public ResponseEntity<? extends Responsable> getCar(@PathVariable(value = "id") Long id) {
 			try {
 				return ResponseEntity.ok(carService.getCar(id));
 			} catch (Exception e) {
-				return ResponseEntity.notFound().build();
+				return new ResponseEntity<CVError>(new CVError(Arrays.asList(e.getMessage())), HttpStatus.NOT_FOUND);
 			}
 		}
 		
