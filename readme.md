@@ -15,7 +15,7 @@
   <li>brand: String</li>
   <li>immatriculation: String (unique)</li>
   <li>traveledDistance: Double</li>
-  <li>comments: String[]</li>
+  <li>comments: Comment[]</li>
 </ul>
 <br/>
 <h6> Elément du Comment</h6>
