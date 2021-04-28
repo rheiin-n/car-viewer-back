@@ -28,7 +28,7 @@ import mg.rheiin.main.services.CommentService;
 public class CommentController {
 	
 	@Autowired
-	CommentService commentService;
+	private CommentService commentService;
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<? extends Responsable> publishComment(@RequestBody CommentRequestDTO commentDTO) {

@@ -21,10 +21,10 @@ import mg.rheiin.main.repositories.CommentRepository;
 @Service
 public class CommentService {
 	@Autowired
-	CarRepository carRepository;
+	private CarRepository carRepository;
 	
 	@Autowired
-	CommentRepository commentRepository;
+	private CommentRepository commentRepository;
 
 	@Transactional
 	public void saveComment(CommentRequestDTO commentDTO, QueryExecutor<Comment, CVError> executor) throws Exception {
